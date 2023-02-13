@@ -25,7 +25,7 @@ class User < ApplicationRecord
   
   has_many :created_events, class_name: 'Event', foreign_key: "creator_id", inverse_of: 'creator'
 
-  has_many :rsvps, foreign_key: :attendee_id, dependent: :destroy
+  has_many :rsvps, foreign_key: :attendee_id, dependent: :delete_all
   # , class_name: 'User'
   has_many :attended_events, through: :rsvps
   

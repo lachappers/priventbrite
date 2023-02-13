@@ -3,6 +3,7 @@
 <p>Find me in app/views/events/index.html.erb</p>
 
 <%= link_to "New Event", new_event_path %>
+<h2>All events</h2>
 <table>
   <thead>
     <tr>
@@ -15,15 +16,18 @@
     </tr>
   </thead>
   <tbody id = "events">
-    <% @events.each do |event|%>
-      <tr>
-        <td><%= event.date %></td>
-        <td><%= event.location %></td>
-        <td><%= event.creator.username %></td>
-        <td><%= event.rsvps.count %></td>
-        <td><%= link_to event.title, event %></td>
-        <td><%= event.description %></td>
-      </tr>
-      <%end%>
+    <% @events.each do |event| %>
+      <tr><%= render event %></tr>
+    <% end %>
   </tbody>
 </table>
+<hr>
+<h3>Events you're attending:</h3>
+  <% @attended_events.each do |event| %>
+    <li><%= render event %></li>
+  <% end %>
+<hr>
+<h4>Your Past Events: </h4>
+  <% @attended_events.date_passed.each do |event| %>
+    <li><%= render event %></li>
+  <% end %>
