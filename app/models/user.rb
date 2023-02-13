@@ -24,10 +24,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :created_events, class_name: 'Event', foreign_key: "creator_id", inverse_of: 'creator'
-    
-  has_many :events, through: :attendee_events
-  
-  # has_and_belongs_to_many :events, join_table: :attendees_events, foreign_key: "attendee_id"
 
+  has_many :rsvps, foreign_key: :attendee_id, dependent: :destroy
+  # , class_name: 'User'
+  has_many :attended_events, through: :rsvps
   
 end

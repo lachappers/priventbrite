@@ -1,0 +1,12 @@
+
+<%= event.attendees.count %> Attendees
+<%# <% if current_user != event.creator %> %>
+  <%# <% if rsvp.nil? %> %>
+  <% if event.attendees.include?(current_user) %>
+    <%# <%= button_to "Withdraw", event_rsvp_path (@event), method: :destroy %> %>
+    <%= button_to "Withdraw", event_rsvp_path(event), method: :delete %> 
+
+  <% else %>
+    <%# <%= link_to event_rsvps_path(@event), method: :post %> %>
+    <%= button_to "Attend", event_rsvps_path(event), params: { rsvp:{ attendee_id: current_user.id, attended_event_id: event.id} }, method: :post %>
+  <% end %>

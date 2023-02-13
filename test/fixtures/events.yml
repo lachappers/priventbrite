@@ -2,13 +2,15 @@
 #
 # Table name: events
 #
-#  id         :integer          not null, primary key
-#  date       :date
-#  location   :string
-#  start_time :time
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  creator_id :integer          not null
+#  id          :integer          not null, primary key
+#  date        :date
+#  description :string
+#  location    :string
+#  start_time  :time
+#  title       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  creator_id  :integer          not null
 #
 # Indexes
 #
