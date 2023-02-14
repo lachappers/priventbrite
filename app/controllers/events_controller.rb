@@ -19,7 +19,10 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all.order(date: :asc)
+    # scope to see all events
+    # @events = Event.all.order(date: :asc)
+    # scope to only view non-private events
+    @events = Event.is_public.order(date: :asc)
     # scope to see own events only
     # @events = current_user.events
     @attended_events = current_user.attended_events.order(date: :asc)
@@ -54,7 +57,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:date, :location, :start_time, :title, :description, :creator_id, :id)
+    params.require(:event).permit(:date, :location, :start_time, :title, :description, :creator_id, :is_private, :id)
   end
   def set_event
     # users can see all events

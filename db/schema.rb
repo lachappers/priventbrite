@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_13_151232) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_14_104754) do
   create_table "events", force: :cascade do |t|
     t.date "date"
     t.time "start_time"
@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_13_151232) do
     t.integer "creator_id", null: false
     t.string "title"
     t.string "description"
+    t.boolean "is_private", default: false, null: false
     t.index ["creator_id"], name: "index_events_on_creator_id"
   end
 

@@ -5,6 +5,7 @@
 #  id          :integer          not null, primary key
 #  date        :date
 #  description :string
+#  is_private  :boolean          default(FALSE), not null
 #  location    :string
 #  start_time  :time
 #  title       :string
@@ -28,5 +29,6 @@ class Event < ApplicationRecord
 
   scope :past, -> { where("DATE(date) < ?", Date.today)}
   scope :future, -> { where("DATE(date) >= ?", Date.today)}
+  scope :is_public, -> { where(is_private: false)}
   
 end

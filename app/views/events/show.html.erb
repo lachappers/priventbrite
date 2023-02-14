@@ -1,5 +1,5 @@
 <h1>Event</h1>
-
+<p><%= p params %></p>
 <p id='notice' style="color: green"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
@@ -16,6 +16,7 @@
   <p>Attendees</p>
   <p>Total: <%= @event.rsvps.count %> people</p>
   <p>Names: <%= @usernames %></p>
+  <p>Private: <%= @event.is_private %></p>
 </div>
 
 

@@ -5,6 +5,7 @@
 #  id          :integer          not null, primary key
 #  date        :date
 #  description :string
+#  is_private  :boolean          default(FALSE), not null
 #  location    :string
 #  start_time  :time
 #  title       :string
