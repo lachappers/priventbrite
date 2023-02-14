@@ -23,11 +23,16 @@
 </table>
 <hr>
 <h3>Events you're attending:</h3>
-  <% @attended_events.each do |event| %>
+  <% @attended_events.future.each do |event| %>
+    <li><%= render event %></li>
+  <% end %>
+  <hr>
+  <h3>Events you're hosting:</h3>
+  <% current_user.created_events.future.each do |event| %>
     <li><%= render event %></li>
   <% end %>
 <hr>
 <h4>Your Past Events: </h4>
-  <% @attended_events.date_passed.each do |event| %>
+  <% @attended_events.past.each do |event| %>
     <li><%= render event %></li>
   <% end %>

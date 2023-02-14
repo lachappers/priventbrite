@@ -8,11 +8,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    # @event = Event.new(event_params)
-
     @event = current_user.created_events.new(event_params)
-    # @event.creator = current_user
-
     if @event.save
       flash[:success] = "Great! Your event has been created!"
       redirect_to @event
@@ -26,7 +22,6 @@ class EventsController < ApplicationController
     @events = Event.all.order(date: :asc)
     # scope to see own events only
     # @events = current_user.events
-    # attending events
     @attended_events = current_user.attended_events.order(date: :asc)
     
   end

@@ -1,7 +1,7 @@
 
 <%= event.attendees.count %> Attendees
 <br>
-  <% if event.date_passed %>
+<% if Event.past.include?(event) %>
     <p>Registration closed - event already happened</p>
 <% else %>
     <% if event.attendees.include?(current_user) %>

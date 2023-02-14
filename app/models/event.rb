@@ -26,6 +26,7 @@ class Event < ApplicationRecord
   has_many :rsvps, foreign_key: :attended_event_id, dependent: :delete_all
   has_many :attendees, through: :rsvps
 
-  scope :date_passed, -> { where("DATE(date) < ?", Date.today)}
-
+  scope :past, -> { where("DATE(date) < ?", Date.today)}
+  scope :future, -> { where("DATE(date) >= ?", Date.today)}
+  
 end
